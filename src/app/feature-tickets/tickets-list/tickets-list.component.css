@@ -1,0 +1,11 @@
+mat-list-item {
+  cursor: pointer;
+}
+
+button.add-ticket {
+  margin-top: 24px;
+}
+
+.searchInput {
+  width: 100%;
+}

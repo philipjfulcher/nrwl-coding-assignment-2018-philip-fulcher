@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Add ticket</h1>
+<form [formGroup]="form" (submit)="submit()">
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Description of ticket</mat-label>
+    <input cdkFocusInitial matInput formControlName="description">
+    <mat-error>Please enter a description.</mat-error>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button type="button" (click)="cancel()"> Cancel</button>
+  <button mat-button type="submit">Add Ticket</button>
+</div>
+</form>

@@ -1,0 +1,33 @@
+<button mat-raised-button color="accent" [routerLink]="['..']">
+  <mat-icon>keyboard_arrow_left</mat-icon> Back to tickets List</button>
+<p>
+  <strong>Description:</strong> {{(ticket$ | async)?.description}}
+</p>
+
+<ng-container *ngIf="(assignedUser$ | async)">
+  <p>
+    <strong>Assigned to:</strong> {{(assignedUser$ | async)?.name}}
+  </p>
+</ng-container>
+
+<ng-container *ngIf="!(ticket$ | async)?.assigneeId">
+  <mat-form-field>
+      <mat-label>Assign to User</mat-label>
+
+    <mat-select [formControl]="assignUserControl">
+      <mat-option *ngFor="let user of users$ | async" [value]="user.id">{{user.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</ng-container>
+
+<ng-container *ngIf="!(ticket$ | async)?.completed">
+  <p>
+    <button mat-raised-button color="accent" (click)="completeTicket()" [disabled]="!(assignedUser$ | async)">Complete Ticket</button>
+  </p>
+</ng-container>
+
+<ng-container *ngIf="(ticket$ | async)?.completed">
+  <p>
+    Ticket is complete.
+  </p>
+</ng-container>

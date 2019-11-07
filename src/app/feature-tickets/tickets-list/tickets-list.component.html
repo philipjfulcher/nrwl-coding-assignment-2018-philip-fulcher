@@ -1,0 +1,11 @@
+  <mat-form-field class="searchInput">
+    <mat-label>Search by description...</mat-label>
+    <input type="text" matInput [formControl]="searchControl"> 
+  </mat-form-field>
+  <mat-list>
+    <ng-container *ngFor="let ticket of tickets$ | async">
+      <mat-list-item [routerLink]="[ticket.id]">{{ticket.description}}</mat-list-item>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </mat-list>
+  <button class="add-ticket" mat-raised-button color="accent" (click)="onAddTicketClick()">Add Ticket</button>
